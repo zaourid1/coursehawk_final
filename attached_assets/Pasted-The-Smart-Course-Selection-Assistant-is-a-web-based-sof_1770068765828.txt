@@ -1,0 +1,53 @@
+The Smart Course Selection Assistant is a web-based software system designed to help university students plan their academic courses more effectively. The system will guide users through course selection by considering prerequisites, degree requirements, scheduling conflicts, and personal preferences such as workload difficulty and interest areas. Additionally, scheduling includes the timing of each course and the professor offering it. 
+Students will be able to create a profile, view eligible courses, and receive recommendations that align with their academic goals. The system is intended to support students before enrollment periods, helping them avoid common mistakes and improve long-term academic planning.
+ 	
+Project Objectives
+Identify prerequisite and eligibility issues by validating whether proposed courses can be taken based on completed prerequisites and restrictions.
+Recommend next courses that satisfy remaining requirements and align with a user-selected interest path, and provide a short explanation for each recommendation.
+Build and save term plans by allowing users to assemble course sets for a term, check feasibility, and store multiple plan options for comparison.
+Generate an academic advising request that compiles program context, remaining requirements, proposed plan options, and targeted questions into a ready-to-send format.
+Provide reporting views such as remaining requirements by category, credits completed versus required, and progress across saved plans
+
+Initial Product Backlog (User Stories)
+
+Story ID
+Story Title
+User Story
+UI-01
+Home Dashboard
+As a student, I want to see a categorized list of remaining requirements and credits so I can understand exactly what is left to graduate.
+UI-02
+Semesters
+As a student, I want to build future semesters and retrieve the CRNs, so I am more organised on course selection day.
+UI-03
+Alerts on Dashboard
+As a student, I want the system to warn me about risky plans such as heavy prerequisite chains or too many difficult courses in one term so I can avoid burnout and delays.
+UI-04
+Chatbot
+As a student, I want a chatbot that can answer simple advisor questions like “what do I take next” using my degree data and can generate an advisor ready request summarizing my status, plan options, and exact questions so I can get faster and more accurate guidance.
+UI-05
+YourPath (Semesters)
+As a student, I want to save and update my plan over time so I can adjust when courses are unavailable or my goals change.
+REP-01
+Eligibility and Prerequisite Report
+As a student, I want a report that lists the courses I am eligible to take next term and the courses I am not eligible to take yet, with the specific prerequisite or restriction causing the block so I can plan efficiently.
+ADV-01
+Advising Request Generator
+As a student, I want a generated advising request so that advisors can respond faster. 
+PLAN-01
+Term Plan Builder
+As a student, I want to assemble a set of courses for a term so that I can test feasibility.
+PLAN-02
+Save Plan Options
+As a student, I want to save multiple plans so that I can compare options. 
+
+	
+
+Ethical Considerations
+Data privacy: The tool handles sensitive academic records, so over-collection or long retention creates harm if exposed. We will collect only what is needed securely, ensure some optional fields, support export and delete, and clearly state that the tool is unofficial. Through private logins via Google, no information is shared publicly.
+Security: The tool will force the user to save personal educational data, like the courses taken and the courses to be attended, that should not be leaked or abused. To counter that, users must log in before being allowed to use any features, and any access to data is on a per-user basis. User entries are account-based and cannot be shared with other users. Authentication is done using Google sign-in, and database access is limited to the user, meaning he or she can only view or make changes to his or her information. These will minimize the possibility of unauthorized access, and the system remains simple and fits its purpose.
+Accuracy and Potential Harm: We will label outputs as planning only, show why each requirement or recommendation is counted, block or warn on prerequisite conflicts, and surface assumptions in the advising draft.
+Accessibility: If the planner is not accessible, some students cannot use it at all. We will support keyboard navigation, proper labels and focus states, readable contrast, and clear non-colour-only errors, then test core flows with basic accessibility checks.
+Advising Request Integrity: Generated requests can be spammy or sent without full user intent. We will generate concise drafts that users must review and manually copy and paste in loris advising forms, using structured prompts that force the correct instruction from the advisor.
+
+

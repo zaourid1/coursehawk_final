@@ -1,0 +1,29 @@
+VERDICT: REJECTED
+The diff is close, but it misses at least one explicit core requirement from the task definition, so it should not be approved as complete.
+
+Critical findings:
+- **Auth logout endpoint does not match required contract.** The task VERDICT: REJECTED
+explicitly requires `GET /api/auth/logout`, but implementation provides `PThe diff is close, but it misses at least one explicit core requirement from the task definition, so it should not be approved as complete.
+OST /api/auth/logout` (`server/auth/auth.ts`), an
+d frontend calls POST (`client/src/hooks/use-auth.ts`). This Critical findings:
+is a direct mismatch against the stated deliverable and can break expected integrations/tests.
+- The major portability goals otherwise appear addressed: Replit-specific Vite plugins are removed, Replit env vars are removed, OpenAI now uses `OPENAI_API_KEY` + `gpt-4o`, `vercel.json` and `api/index.ts` exist, and README is present without Replit references.
+- Auth was migrated to session + bcrypt with register/login/user routes and DB fields (`email`, `passwordHash`) represented in shared auth schema.
+
+Security:
+- No serious security violations observed that would independently block release.
+
+Next actions:
+1. Change logout route to match spec: add/replace with `GET /api/auth/logout` (and keep POST only if backward compatibility is needed).
+2. Update frontend logout call to `GET /api/auth/logout` to align with required API contract.
+3. Run a quick endpoint contract check (`/api/auth/register`, `/api/auth/login`, `/api/auth/user`, `/api/auth/logout`) and confirm Vercel routing behavior after the route change.- **Auth logout endpoint does not match required contract.** The task explicitly requires `GET /api/auth/logout`, but implementation provides `POST /api/auth/logout` (`server/auth/auth.ts`), and frontend calls POST (`client/src/hooks/use-auth.ts`). This is a direct mismatch against the stated deliverable and can break expected integrations/tests.
+- The major portability goals otherwise appear addressed: Replit-specific Vite plugins are removed, Replit env vars are removed, OpenAI now uses `OPENAI_API_KEY` + `gpt-4o`, `vercel.json` and `api/index.ts` exist, and README is present without Replit references.
+- Auth was migrated to session + bcrypt with register/login/user routes and DB fields (`email`, `passwordHash`) represented in shared auth schema.
+
+Security:
+- No serious security violations observed that would independently block release.
+
+Next actions:
+1. Change logout route to match spec: add/replace with `GET /api/auth/logout` (and keep POST only if backward compatibility is needed).
+2. Update frontend logout call to `GET /api/auth/logout` to align with required API contract.
+3. Run a quick endpoint contract check (`/api/auth/register`, `/api/auth/login`, `/api/auth/user`, `/api/auth/logout`) and confirm Vercel routing behavior after the route change.

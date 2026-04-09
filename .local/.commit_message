@@ -1,0 +1,31 @@
+feat: Make project Vercel-ready + WLU Laurier theme + TypeScript fixes
+
+Task #1: Make project portable & Vercel-ready
+
+Portability changes:
+- Removed @replit/vite-plugin-* (3 packages) and openid-client from deps
+- Deleted client/replit_integrations/audio/ (unused Replit integration)
+- Fixed logout route: POST → GET /api/auth/logout (task spec requirement)
+- Updated frontend logout call to match GET endpoint
+- Auth uses bcrypt + express-session (no Replit OIDC)
+- OpenAI uses OPENAI_API_KEY + gpt-4o (no Replit proxy)
+- vercel.json + api/index.ts present for Vercel serverless deployment
+- README.md present with setup docs, no Replit references
+- server/index.ts has isDirectRun guard for serverless compatibility
+
+TypeScript fixes (npm run check now passes with 0 errors):
+- Removed (req as any).user cast in routes.ts; use typed req.user via module augmentation
+- Changed isAuthenticated from RequestHandler to explicit (req: Request, res: Response, next: NextFunction) signature
+- Fixed all parseInt(req.params.id) calls to parseInt(String(req.params.id)) for Express 5 params typing
+- Fixed advisor.tsx: changed variant="link" (invalid) to variant="ghost"
+- Fixed courses.tsx: changed [...new Set(...)] to Array.from(new Set(...))
+- Split returns in isAuthenticated to separate res.json() call from return void
+
+WLU Laurier branding and content:
+- Rethemed to Wilfrid Laurier purple + gold color scheme throughout
+- Dark purple sidebar with gold accents
+- Landing page uses shadcn Tabs for Sign In / Register (fixes click issue)
+- Replaced 24 generic demo courses with 30 real WLU CS courses (CP/MA/ST/etc.)
+- Updated degree requirements to WLU CS Honours BSc (75 total credits)
+- Updated dashboard, alerts, page title to reference WLU
+- Cleared old demo data from database
