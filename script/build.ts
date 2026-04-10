@@ -60,31 +60,6 @@ async function buildAll() {
     logLevel: "info",
   });
 
-  // Build Vercel serverless function (pre-bundled so Vercel doesn't need to resolve @shared/* aliases)
-  console.log("building vercel api handler...");
-  await esbuild({
-    entryPoints: ["api/index.ts"],
-    platform: "node",
-    bundle: true,
-    format: "esm",
-    outfile: "api/index.mjs",
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
-    banner: {
-      js: [
-        'import { createRequire as __createRequire } from "module";',
-        'import { fileURLToPath as __fileURLToPath } from "url";',
-        'import { dirname as __dirname_fn } from "path";',
-        "const __filename = __fileURLToPath(import.meta.url);",
-        "const __dirname = __dirname_fn(__filename);",
-        "const require = __createRequire(import.meta.url);",
-      ].join("\n"),
-    },
-    minify: true,
-    external: externals,
-    logLevel: "info",
-  });
 }
 
 buildAll().catch((err) => {

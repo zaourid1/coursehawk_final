@@ -7,4 +7,3 @@ vite.config.ts.*
 .env
 .env.local
 .replit
-api/index.mjs

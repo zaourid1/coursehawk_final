@@ -3,7 +3,7 @@ import type { Express, Request, Response, NextFunction } from "express";
 import connectPg from "connect-pg-simple";
 import bcrypt from "bcryptjs";
 import { authStorage } from "./storage";
-import type { User } from "@shared/models/auth";
+import type { User } from "../../shared/models/auth";
 
 declare module "express-session" {
   interface SessionData {

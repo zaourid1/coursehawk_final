@@ -25,7 +25,7 @@ import {
   type CourseWithEligibility,
   type SemesterPlanWithCourses,
   type PlanCourseWithDetails,
-} from "@shared/schema";
+} from "../shared/schema";
 
 export interface IStorage {
   // Courses
